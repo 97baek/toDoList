@@ -1,0 +1,21 @@
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: #ccc;
+}
+
+.hiding {
+  display: none;
+}
+
+.showing {
+  display: block;
+}

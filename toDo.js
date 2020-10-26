@@ -5,8 +5,8 @@ const done = document.querySelector(".doneToDo");
 
 const TODO_LS = "toDos";
 const DONE_LS = "done";
-const JS_TODO_LS = "js-toDoList";
-const JS_DONE_LS = "js-doneList";
+const JS_TODO_LS = "toDoList";
+const JS_DONE_LS = "doneToDo";
 let toDoArray = [];
 let doneArray = [];
 
@@ -26,17 +26,18 @@ function handleDelete(event) {
   if (ulName.className.search(JS_TODO_LS) !== -1) {
     toDoList.removeChild(li);
     const cleanToDos = toDoArray.filter((toDo) => {
-      return toDo.id !== parseInt(li.id, 10);
+      return toDo.id !== parseInt(li.id);
     });
-    toDos = cleanToDos;
-    saveToDos();
+    toDoArray = cleanToDos;
+    console.log("hi");
+    saveToDo();
   } else if (ulName.className.search(JS_DONE_LS) !== -1) {
-    doneList.removeChild(li);
+    done.removeChild(li);
     const cleanToDos = doneArray.filter((done) => {
-      return done.id !== parseInt(li.id, 10);
+      return done.id !== parseInt(li.id);
     });
-    dones = cleanToDos;
-    saveDones();
+    doneArray = cleanToDos;
+    saveDone();
   }
 }
 
@@ -47,28 +48,25 @@ function handleCheck(event) {
   handleDelete(event);
 
   if (ulName.className.search(JS_TODO_LS) !== -1) {
-    paintDoneList(value);
+    paintDone(value);
   } else if (ulName.className.search(JS_DONE_LS) !== -1) {
-    paintToDoList(value);
+    paintToDo(value);
   }
 }
 
 function paintDone(text) {
   const li = document.createElement("li");
   li.classList.add("li");
-  const checkbox = document.createElement("input");
-  checkbox.classList.add("checkbox");
-  checkbox.type = "checkbox";
-  checkbox.checked = true;
-  checkbox.addEventListener("change", handleCheck);
+  const checkBtn = document.createElement("button");
+  checkBtn.innerText = "✅";
   const span = document.createElement("span");
-  text.innerText = text;
+  span.innerText = text;
   const delBtn = document.createElement("button");
   delBtn.classList.add("delBtn");
   delBtn.innerText = "❌";
   delBtn.addEventListener("click", handleDelete);
   const newId = doneArray.length + 1;
-  li.appendChild(checkbox);
+  li.appendChild(checkBtn);
   li.appendChild(span);
   li.appendChild(delBtn);
   li.id = newId;
@@ -88,8 +86,8 @@ function paintToDo(text) {
   const doneBtn = document.createElement("button");
   const newId = toDoArray.length + 1;
   span.innerText = text;
-  delBtn.innerText = "X";
-  doneBtn.innerText = "V";
+  delBtn.innerText = "❌";
+  doneBtn.innerText = "✅";
   doneBtn.addEventListener("click", handleCheck);
   delBtn.addEventListener("click", handleDelete);
   li.appendChild(doneBtn);

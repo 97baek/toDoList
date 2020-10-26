@@ -1,6 +1,17 @@
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
 ul {
   list-style: none;
   padding-left: 0;
+}
+
+button {
+  background: 0, 0, 0, 0;
+  border: 0;
 }
 
 .container {
@@ -9,7 +20,28 @@ ul {
   justify-content: center;
   align-items: center;
   height: 100%;
-  background: #ccc;
+  background: peru;
+}
+
+.clock {
+  color: white;
+  font-size: 10rem;
+  text-shadow: 3px 3px 10px gray;
+}
+
+.input {
+  width: 700px;
+  font-size: 30px;
+  margin: 12px;
+  background: rgba(0, 0, 0, 0);
+  color: #fff;
+  border: 0;
+  border-bottom: 2px solid #ccc;
+}
+
+.hellomsg {
+  width: 700px;
+  font-size: 30px;
 }
 
 .hiding {
@@ -18,4 +50,32 @@ ul {
 
 .showing {
   display: block;
+}
+
+.toDo-container {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #fff;
+  border-radius: 24px;
+  width: 630px;
+  padding: 36px;
+  margin: 30px;
+}
+
+.toDo-container .list-container {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.toDo-container .list-container li {
+  text-align: center;
+}
+
+.list-container h1 {
+  margin: 8px 12px;
+  padding: 8px 12px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
 }
